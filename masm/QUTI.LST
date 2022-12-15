@@ -1,0 +1,63 @@
+Microsoft (R) Macro Assembler Version 5.10                  11/28/22 20:17:1
+                                                             Page     1-1
+
+
+       1				assume cs:codesg
+       2				
+       3 0000				codesg segment
+       4				
+       5 0000  B8 4C00			    mov ax,4c00h
+       6 0003  CD 21			    int 21h
+       7				
+       8 0005  B8 0000			start: mov ax,0
+       9 0008  90			    s: nop
+      10 0009  90			       nop
+      11 000A  BF 0008 R		       mov di,offset s
+      12 000D  BE 0020 R		       mov si,offset s2
+      13 0010  2E: 8B 04		       mov ax,cs:[si]
+      14 0013  2E: 89 05		       mov cs:[di],ax
+      15				
+      16 0016  EB F0			    s0: jmp short s
+      17				
+      18 0018  B8 0000			    s1: mov ax,0
+      19 001B  CD 21			        int 21h
+      20 001D  B8 0000			        mov ax,0
+      21				    
+      22 0020  EB F6			    s2: jmp short s1
+      23 0022  90			        nop
+      24 0023				codesg ends
+      25				
+      26				end start
+Microsoft (R) Macro Assembler Version 5.10                  11/28/22 20:17:1
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODESG . . . . . . . . . . . . .  	0023	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+S  . . . . . . . . . . . . . . .  	L NEAR	0008	CODESG
+S0 . . . . . . . . . . . . . . .  	L NEAR	0016	CODESG
+S1 . . . . . . . . . . . . . . .  	L NEAR	0018	CODESG
+S2 . . . . . . . . . . . . . . .  	L NEAR	0020	CODESG
+START  . . . . . . . . . . . . .  	L NEAR	0005	CODESG
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  t1		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     26 Source  Lines
+     26 Total   Lines
+     11 Symbols
+
+  47358 + 463981 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors
